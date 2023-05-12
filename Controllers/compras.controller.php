@@ -35,9 +35,10 @@ class ComprasController {
     $tipo_nota = $request->data->tipo_nota;
     $total = $request->data->total;
 
-    $sql = "set @Contador = (SELECT COUNT(*) FROM compras);
-    INSERT INTO compras 
-    VALUES (CONCAT('Fol.', LPAD( (@Contador+1), 3, '0')),NOW(),?,?,?);";
+    $sql = "SET @Contador = (SELECT COUNT(*) FROM compras);
+        SET @Folio = CONCAT('Fol.', LPAD((@Contador+1), 3, '0'));
+        INSERT INTO compras (folio, fecha, cliente, tipo_nota, total) 
+        VALUES (@Folio, NOW(), ?, ?, ?)";
     $query = Flight::db()->prepare($sql);
 
 
@@ -47,7 +48,7 @@ class ComprasController {
     $query->execute();
 
     Flight::json(["compra creada exitosamente"]);
-}
+    }
 
     // Eliminar una compra por folio
     public static function deleteCompra($folio) {
