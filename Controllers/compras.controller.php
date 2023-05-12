@@ -31,20 +31,19 @@ class ComprasController {
     // Agregar una compra
     public static function post() {
     $request = Flight::request();
-    $folio = $request->data->folio;
-    $fecha = $request->data->fecha;
     $cliente = $request->data->cliente;
     $tipo_nota = $request->data->tipo_nota;
     $total = $request->data->total;
 
-    $sql = "INSERT INTO `compras` (`folio`, `fecha`, `cliente`, `tipo_nota`, `total`) VALUES (?, ?, ?, ?, ?)";
+    $sql = "set @Contador = (SELECT COUNT(*) FROM compras);
+    INSERT INTO compras 
+    VALUES (CONCAT('Fol.', LPAD( (@Contador+1), 3, '0')),NOW(),?,?,?);";
     $query = Flight::db()->prepare($sql);
 
-    $query->bindParam(1, $folio);
-    $query->bindParam(2, $fecha);
-    $query->bindParam(3, $cliente);
-    $query->bindParam(4, $tipo_nota);
-    $query->bindParam(5, $total);
+
+    $query->bindParam(1, $cliente);
+    $query->bindParam(2, $tipo_nota);
+    $query->bindParam(3, $total);
     $query->execute();
 
     Flight::json(["compra creada exitosamente"]);

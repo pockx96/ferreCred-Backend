@@ -22,3 +22,6 @@ SELECT * FROM Compras WHERE fecha = ?;
 
 
 // pruebas
+set @Contador = (SELECT COUNT(*) FROM compras);
+INSERT INTO compras 
+VALUES (CONCAT('Fol.', LPAD( (@Contador+1), 3, '0')),NOW(),"OTRO JUAN",'credito',420.00);
