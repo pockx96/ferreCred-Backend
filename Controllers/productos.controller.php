@@ -21,17 +21,17 @@ class ProductosController {
     public static function post(){
         $request = Flight::request();
         $codigo = $request->data->codigo;
-        $folio = $request->data->folio;
-        $unidad = $request->data->unidad;
+        $peso = $request->data->peso;
         $cantidad = $request->data->cantidad;
         $importe = $request->data->importe;
-        $sql = "INSERT INTO `productos`VALUES (?,?,?,?,?)";
+        $sql = "INSERT INTO productos (codigo, folio, peso, cantidad, importe)
+        VALUES (?, (SELECT folio FROM compras ORDER BY folio DESC LIMIT 1), ?, ?, ?);
+        ";
         $query = Flight::db()->prepare($sql);
         $query->bindParam(1,$codigo);
-        $query->bindParam(2,$folio);
-        $query->bindParam(3,$unidad);
-        $query->bindParam(4,$cantidad);
-        $query->bindParam(5,$importe);
+        $query->bindParam(2,$peso);
+        $query->bindParam(3,$cantidad);
+        $query->bindParam(4,$importe);
         $query->execute();
         Flight::json(["registro creado exitosamente"]);
     }

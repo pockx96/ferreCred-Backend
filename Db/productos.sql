@@ -3,7 +3,7 @@
 CREATE TABLE `productos` (
   `codigo` INT ,
   `folio` VARCHAR(50) NOT NULL,
-  `unidad` VARCHAR(50),
+  `peso` DECIMAL(10, 2),
   `cantidad` INT,
   `importe` DECIMAL(10, 2)
 );
@@ -13,8 +13,7 @@ CHANGE COLUMN `folio` `folio` VARCHAR(50) NOT NULL DEFAULT CONCAT('Fol.', LPAD(`
 
 /// Query para consola
 
-CREATE TABLE `productos` (`codigo` INT ,`folio` VARCHAR(50) ,`unidad` DECIMAL(10, 2),`cantidad` INT,`importe` DECIMAL(10, 2));
-
+CREATE TABLE `productos` (`codigo` INT ,`folio` VARCHAR(50) NOT NULL,`peso` DECIMAL(10, 2),`cantidad` INT,`importe` DECIMAL(10, 2));
 
 
 //funciones CRUD
