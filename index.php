@@ -189,7 +189,12 @@ Flight::route('DELETE /proveedores/@id', function($id) {
 Flight::route('GET /inventario', function(){
     inventarioController::getAll();
 });
-
+Flight::route('PUT /inventario', function(){
+    inventarioController::restarCantidad();
+});
+Flight::route('POST /inventario', function(){
+    inventarioController::sumarCantidad();
+});
 /// Bitacora
 
 Flight::route('GET /bitacora', function(){
