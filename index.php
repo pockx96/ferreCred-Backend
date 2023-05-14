@@ -12,8 +12,8 @@ require 'Controllers/proveedores.controller.php';
 require 'Controllers/inventario.controller.php';
 require 'Controllers/bitacora.controller.php';
 
-Flight::register('db','PDO',array('mysql:host=localhost;dbname=u530512250_ferreDb','u530512250_admi','Huevos*1'));
-// Flight::register('db','PDO',array('mysql:host=localhost;dbname=ferre','admi','root'));
+// Flight::register('db','PDO',array('mysql:host=localhost;dbname=u530512250_ferreDb','u530512250_admi','Huevos*1'));
+Flight::register('db','PDO',array('mysql:host=localhost;dbname=ferre','admi','root'));
 
 
 ini_set('display_errors', 1);
@@ -194,6 +194,9 @@ Flight::route('PUT /inventario', function(){
 });
 Flight::route('POST /inventario', function(){
     inventarioController::sumarCantidad();
+});
+Flight::route('GET /inventario/@codigo',function($codigo){
+    InventarioController::getByCode($codigo);
 });
 /// Bitacora
 

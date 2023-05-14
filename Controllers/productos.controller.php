@@ -25,7 +25,7 @@ class ProductosController {
         $cantidad = $request->data->cantidad;
         $importe = $request->data->importe;
         $sql = "INSERT INTO productos (codigo, folio, peso, cantidad, importe)
-        VALUES (?, (SELECT folio FROM compras ORDER BY folio DESC LIMIT 1), ?, ?, ?);
+        VALUES (?, (SELECT folio FROM compras ORDER BY folio DESC LIMIT 2), ?, ?, ?);
         ";
         $query = Flight::db()->prepare($sql);
         $query->bindParam(1,$codigo);

@@ -71,5 +71,13 @@ class InventarioController
     }
     
 
+    public static function getByCode($codigo){
+        $sqlString = "SELECT cantidad FROM inventario WHERE codigo_producto = ?";
+        $query = flight::db()->prepare($sqlString);
+        $query->execute([$codigo]);
+        $inventario = $query->fetchAll();
+        Flight::json($inventario);
+    }
+
 }
 ?>
