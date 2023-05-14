@@ -1,6 +1,6 @@
 /// Estructura de la tabla
 
-CREATE TABLE `Deuda` ( 
+CREATE TABLE `deuda` ( 
     `cliente` VARCHAR(50) PRIMARY KEY NOT NULL,
     `total` DECIMAL(10, 2),
     `adeudo` DECIMAL(10, 2)
@@ -9,7 +9,8 @@ CREATE TABLE `Deuda` (
 
 /// Query para consola
 
-CREATE TABLE `deuda` ( `folio` VARCHAR(10) PRIMARY KEY NOT NULL,`fecha` VARCHAR(10),`cliente` VARCHAR(50),`total` DECIMAL(10, 2),`adeudo` DECIMAL(10, 2));
+CREATE TABLE `deuda` ( `cliente` VARCHAR(50) PRIMARY KEY NOT NULL,`total` DECIMAL(10, 2),`adeudo` DECIMAL(10, 2));
+
 
 /// Funciones CRUD
 

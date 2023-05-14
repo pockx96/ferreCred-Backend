@@ -48,18 +48,14 @@ class DeudaController {
 
     public static function post() {
         $request = Flight::request();
-        $folio = $request->data->folio;
-        $fecha = $request->data->fecha;
         $cliente = $request->data->cliente;
         $total = $request->data->total;
         $adeudo = $request->data->adeudo;
-        $sql = "INSERT INTO deuda (folio, fecha, cliente, total, adeudo) VALUES (?,?,?,?,?)";
+        $sql = "INSERT INTO deuda (cliente, total, adeudo) VALUES (?,?,?)";
         $query = Flight::db()->prepare($sql);
-        $query->bindParam(1, $folio);
-        $query->bindParam(2, $fecha);
-        $query->bindParam(3, $cliente);
-        $query->bindParam(4, $total);
-        $query->bindParam(5, $adeudo);
+        $query->bindParam(1, $cliente);
+        $query->bindParam(2, $total);
+        $query->bindParam(3, $adeudo);
         $query->execute();
         Flight::json(["deuda creada exitosamente"]);
     }
