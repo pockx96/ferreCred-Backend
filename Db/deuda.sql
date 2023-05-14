@@ -1,9 +1,7 @@
 /// Estructura de la tabla
 
 CREATE TABLE `Deuda` ( 
-    `folio` INT PRIMARY KEY NOT NULL,
-    `fecha` VARCHAR(10),
-    `cliente` VARCHAR(50),
+    `cliente` VARCHAR(50) PRIMARY KEY NOT NULL,
     `total` DECIMAL(10, 2),
     `adeudo` DECIMAL(10, 2)
 );
