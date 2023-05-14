@@ -75,7 +75,7 @@ class InventarioController
         $sqlString = "SELECT cantidad FROM inventario WHERE codigo_producto = ?";
         $query = flight::db()->prepare($sqlString);
         $query->execute([$codigo]);
-        $inventario = $query->fetchAll();
+        $inventario = $query->fetch();
         Flight::json($inventario);
     }
 
