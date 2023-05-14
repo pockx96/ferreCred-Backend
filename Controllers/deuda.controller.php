@@ -27,13 +27,14 @@ class DeudaController {
         Flight::json($deudas);
     }
 
-    public static function put($folio) {
+    public static function put() {
         $request = Flight::request();
         $adeudo = $request->data->adeudo;
-        $sqlString = "UPDATE deuda SET adeudo = ? WHERE folio = ?";
+        $cliente = $request->data->cliente;
+        $sqlString = "UPDATE deuda SET adeudo = adeudo + ? WHERE  cliente = ?";
         $query = Flight::db()->prepare($sqlString);
         $query->bindParam(1, $adeudo);
-        $query->bindParam(2, $folio);
+        $query->bindParam(2, $cliente);
         $query->execute();
         Flight::json(["adeudo actualizado exitosamente"]);
     }

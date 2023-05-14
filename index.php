@@ -134,8 +134,8 @@ Flight::route('GET /deuda/@folio', function($folio) {
 Flight::route('GET /deuda/cliente/@cliente', function($cliente) {
     DeudaController::getByCliente($cliente);
 });
-Flight::route('PUT /deuda/@folio', function($folio) {
-    DeudaController::put($folio);
+Flight::route('PUT /deuda', function() {
+    DeudaController::put();
 });
 
 Flight::route('DELETE /deuda/@folio', function($folio) {
