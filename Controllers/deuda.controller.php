@@ -23,7 +23,7 @@ class DeudaController {
         $query = Flight::db()->prepare($sqlString);
         $query->bindParam(1, $cliente);
         $query->execute();
-        $deudas = $query->fetch();
+        $deudas = $query->fetchAll();
         Flight::json($deudas);
     }
 
