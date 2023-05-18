@@ -5,6 +5,7 @@ CREATE TABLE `compras` (
   `fecha` VARCHAR(10),
   `cliente` VARCHAR(50),
   `tipo_nota` VARCHAR(50),
+  `deuda` DECIMAL(10, 2),
   `total` DECIMAL(10, 2)
 );
 
@@ -12,7 +13,8 @@ CREATE TABLE `compras` (
 
 CREATE TABLE `compras` (`folio` VARCHAR(50) PRIMARY KEY,`fecha` VARCHAR(50),`cliente` VARCHAR(50),`tipo_nota` VARCHAR(50),`total` DECIMAL(10, 2));
 
-// funciones CRUD
+// funciones CRUD´
+
 
 SELECT * FROM Compras; // solo pruebas
 

@@ -18,6 +18,16 @@ class ComprasController {
         $compras = $query->fetchAll();
         Flight::json($compras);
     }
+
+    public static function getDeuda($cliente){
+        $sqlString = "SELECT SUM(deuda) AS suma_deuda
+        FROM compras
+        WHERE cliente = ?;";
+        $query = flight::db()->prepare($sqlString);
+        $query->execute([$cliente]);
+        $compras = $query->fetch();
+        Flight::json($compras);
+    }
     
     // Obtener compras por fecha
     public static function getByFecha($fecha) {

@@ -107,6 +107,10 @@ Flight::route('GET /compras/cliente/@cliente', function($cliente) {
     ComprasController::getByCliente($cliente);
 });
 
+Flight::route('GET /compras/deuda/@cliente', function($cliente) {
+    ComprasController::getDeuda($cliente);
+});
+
 Flight::route('GET /compras/fecha/@fecha', function($fecha) {
     ComprasController::getByFecha($fecha);
 });
