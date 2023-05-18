@@ -3,7 +3,7 @@ class ComprasController {
     
     // Obtener todas las compras
     public static function getAll() {
-        $sqlString = "SELECT * FROM compras";
+        $sqlString = "SELECT * FROM compras ";
         $query = flight::db()->prepare($sqlString);
         $query->execute();
         $compras = $query->fetchAll();
@@ -12,7 +12,7 @@ class ComprasController {
     
     // Obtener compras por cliente
     public static function getByCliente($cliente) {
-        $sqlString = "SELECT * FROM compras WHERE cliente = ?";
+        $sqlString = "SELECT * FROM `compras` WHERE cliente = ? AND deuda>0;";
         $query = flight::db()->prepare($sqlString);
         $query->execute([$cliente]);
         $compras = $query->fetchAll();
