@@ -1,16 +1,14 @@
 CREATE TABLE `proveedores` (
-  `id` INT PRIMARY KEY ,
+  `correo_electronico` VARCHAR(255) PRIMARY KEY ,
   `nombre_empresa` VARCHAR(255),
   `nombre_contacto` VARCHAR(255),
   `direccion` VARCHAR(255),
   `telefono` VARCHAR(20),
-  `correo_electronico` VARCHAR(255),
   `RFC` VARCHAR(255),
-  `deuda` DECIMAL(10, 2)
 );
 
 // Consola
-CREATE TABLE `proveedores` (`id` INT PRIMARY KEY ,`nombre_empresa` VARCHAR(255),`nombre_contacto` VARCHAR(255),`direccion` VARCHAR(255),`telefono` VARCHAR(20),`correo_electronico` VARCHAR(255),`RFC` VARCHAR(255),`deuda` DECIMAL(10, 2));
+CREATE TABLE `proveedores` (`correo_electronico` VARCHAR(255) PRIMARY KEY ,`nombre_empresa` VARCHAR(255),`nombre_contacto` VARCHAR(255),`direccion` VARCHAR(255),`telefono` VARCHAR(20),`RFC` VARCHAR(255));
 
 // funciones CRUD
 

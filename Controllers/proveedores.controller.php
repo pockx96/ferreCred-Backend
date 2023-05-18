@@ -19,25 +19,21 @@ public static function getById($id) {
 
 public static function post() {
     $request = Flight::request();
-    $id = $request->data->id;
-    $nombreEmpresa = $request->data->nombreEmpresa;
-    $nombreContacto = $request->data->nombreContacto;
+    $nombreEmpresa = $request->data->nombre_empresa;
+    $nombreContacto = $request->data->nombre_contacto;
     $direccion = $request->data->direccion;
     $telefono = $request->data->telefono;
-    $correoElectronico = $request->data->correoElectronico;
+    $correoElectronico = $request->data->correo_electronico;
     $RFC = $request->data->RFC;
-    $deuda = $request->data->deuda;
 
-    $sqlString = "INSERT INTO proveedores (id, nombre_empresa, nombre_contacto, direccion, telefono, correo_electronico, RFC, deuda) VALUES (?,?, ?, ?, ?, ?, ?, ?)";
+    $sqlString = "INSERT INTO proveedores (nombre_empresa, nombre_contacto, direccion, telefono, correo_electronico, RFC) VALUES (?,?,?,?,?,?)";
     $query = Flight::db()->prepare($sqlString);
-    $query->bindParam(1, $id);
-    $query->bindParam(2, $nombreEmpresa);
-    $query->bindParam(3, $nombreContacto);
-    $query->bindParam(4, $direccion);
-    $query->bindParam(5, $telefono);
-    $query->bindParam(6, $correoElectronico);
-    $query->bindParam(7, $RFC);
-    $query->bindParam(8, $deuda);
+    $query->bindParam(1, $nombreEmpresa);
+    $query->bindParam(2, $nombreContacto);
+    $query->bindParam(3, $direccion);
+    $query->bindParam(4, $telefono);
+    $query->bindParam(5, $correoElectronico);
+    $query->bindParam(6, $RFC);
     $query->execute();
 
     Flight::json(["proveedor creado exitosamente"]);
