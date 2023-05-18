@@ -37,16 +37,17 @@ class CatalogoProductoController {
         $descripcion = $request->data->descripcion;
         $precio_compra= $request->data->precio_compra;
         $precio_venta = $request->data->precio_venta;
-        $tipo = $request->data->tipo;
+        $peso = $request->data->peso;
 
-        $sqlString = "INSERT INTO catalogo_producto VALUES(?,?,?,?,?)";
+
+        $sqlString = "INSERT INTO catalogo_producto VALUES(?,?,?,?,'pruebas',?)";
         
         $query = flight::db()->prepare($sqlString);
         $query->bindParam(1, $codigo);
         $query->bindParam(2, $descripcion);
         $query->bindParam(3, $precio_compra);
         $query->bindParam(4, $precio_venta);
-        $query->bindParam(5, $tipo);
+        $query->bindParam(5, $peso);
         $query->execute();
         Flight::json("Producto agregado correctamente");
     }
