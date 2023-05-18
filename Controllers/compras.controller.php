@@ -66,4 +66,21 @@ class ComprasController {
         $query->execute([$folio]);
         Flight::json(['message' => 'Compra eliminada exitosamente']);
     }
+
+    // Actualizar la deuda
+    public static function DeudaUpdate() {
+        $request = Flight::request();
+        $folio = $request->data->folio;    
+        $deuda = $request->data->deuda;    
+        $sql = "UPDATE compras
+        SET deuda = ?
+        WHERE folio = ?;";
+        $query = Flight::db()->prepare($sql);
+        $query->bindValue(1, $deuda);
+        $query->bindValue(2, $folio);
+        $query->execute();
+    
+        Flight::json(["Deuda actualizada"]);
+    }
+    
 }

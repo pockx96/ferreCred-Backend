@@ -12,8 +12,8 @@ require 'Controllers/proveedores.controller.php';
 require 'Controllers/inventario.controller.php';
 require 'Controllers/bitacora.controller.php';
 
-Flight::register('db','PDO',array('mysql:host=localhost;dbname=u530512250_ferreDb','u530512250_admi','Huevos*1'));
-// Flight::register('db','PDO',array('mysql:host=localhost;dbname=ferre','admi','root'));
+// Flight::register('db','PDO',array('mysql:host=localhost;dbname=u530512250_ferreDb','u530512250_admi','Huevos*1'));
+Flight::register('db','PDO',array('mysql:host=localhost;dbname=ferre','admi','root'));
 
 
 ini_set('display_errors', 1);
@@ -122,6 +122,12 @@ Flight::route('POST /compras', function() {
 Flight::route('DELETE /compras/@folio', function($folio) {
     ComprasController::deleteCompra($folio);
 });
+
+Flight::route('PUT /compras', function() {
+    ComprasController::DeudaUpdate();
+});
+
+
 
 // Deudas
 
