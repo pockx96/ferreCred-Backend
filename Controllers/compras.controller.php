@@ -44,15 +44,18 @@ class ComprasController {
     $cliente = $request->data->cliente;
     $tipo_nota = $request->data->tipo_nota;
     $total = $request->data->total;
+    $deuda = $request->data->deuda;
 
-    $sql = "INSERT INTO compras (folio, fecha, cliente, tipo_nota, total) 
-            SELECT CONCAT('Fol.', LPAD(COALESCE(MAX(SUBSTR(folio, 5)), 0) + 1, 3, '0')), NOW(), ?, ?, ? 
+
+    $sql = "INSERT INTO compras (folio, fecha, cliente, tipo_nota, total,deuda) 
+            SELECT CONCAT('Fol.', LPAD(COALESCE(MAX(SUBSTR(folio, 5)), 0) + 1, 3, '0')), NOW(), ?, ?, ? ?
             FROM compras";
     $query = Flight::db()->prepare($sql);
 
     $query->bindValue(1, $cliente);
     $query->bindValue(2, $tipo_nota);
     $query->bindValue(3, $total);
+    $query->bindValue(4, $deuda);
     $query->execute();
 
     Flight::json(["compra creada exitosamente"]);
