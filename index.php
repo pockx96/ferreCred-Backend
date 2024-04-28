@@ -12,7 +12,7 @@ require 'Controllers/proveedores.controller.php';
 require 'Controllers/inventario.controller.php';
 require 'Controllers/bitacora.controller.php';
 
-Flight::register('db','PDO',array('mysql:host=localhost;dbname=u530512250_ferreDb','u530512250_admi','Huevos*1'));
+Flight::register('db','PDO',array('mysql:host=193.203.166.166;dbname=u428227033_ferrecred','u428227033_admin','Huevos*321'));
 // Flight::register('db','PDO',array('mysql:host=localhost;dbname=ferre','admi','root'));
 
 
