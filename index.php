@@ -53,7 +53,7 @@ Flight::route('PUT /usuarios', function () {
 });
 
 // Controlador clientes
-    //Todo funciona correctamente
+    //todo funciona correctamente
 Flight::route('GET /clientes', function(){
     clienteController::getAll();
 });
