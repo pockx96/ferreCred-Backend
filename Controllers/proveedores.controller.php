@@ -18,6 +18,7 @@ public static function getById($id) {
 }
 
 public static function post() {
+    //no hay id?
     $request = Flight::request();
     $nombreEmpresa = $request->data->nombre_empresa;
     $nombreContacto = $request->data->nombre_contacto;
