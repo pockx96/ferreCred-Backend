@@ -1,7 +1,7 @@
 CREATE TABLE inventario (
 codigo_producto INT NOT NULL,
 cantidad INT NOT NULL,
-FOREIGN KEY (codigo_producto) REFERENCES catalogo_producto(codigo)
+PRIMARY KEY (codigo_producto) REFERENCES catalogo_producto(codigo)
 );
 
 CREATE TABLE inventario (codigo_producto INT NOT NULL,cantidad INT NOT NULL,FOREIGN KEY (codigo_producto) REFERENCES catalogo_producto(codigo));

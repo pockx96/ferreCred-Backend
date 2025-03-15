@@ -1,8 +1,10 @@
 <?php
-class CatalogoProductoController {
-    
+class CatalogoProductoController
+{
+
     // Método para obtener todos los productos
-    public static function getAll() {
+    public static function getAll()
+    {
         $sqlString = "SELECT * FROM catalogo_producto";
         $query = flight::db()->prepare($sqlString);
         $query->execute();
@@ -11,7 +13,8 @@ class CatalogoProductoController {
     }
 
     // Método para obtener un producto por su código
-    public static function getByCode($codigo) {
+    public static function getByCode($codigo)
+    {
         $sqlString = "SELECT * FROM catalogo_producto WHERE codigo = ?";
         $query = flight::db()->prepare($sqlString);
         $query->bindParam(1, $codigo);
@@ -21,7 +24,8 @@ class CatalogoProductoController {
     }
 
     // Método para buscar productos por descripción
-    public static function getByDescripcion($descripcion) {
+    public static function getByDescripcion($descripcion)
+    {
         $sqlString = "SELECT * FROM catalogo_producto WHERE descripcion LIKE :descripcion";
         $query = flight::db()->prepare($sqlString);
         $query->bindValue(":descripcion", "%$descripcion%");
@@ -31,13 +35,14 @@ class CatalogoProductoController {
     }
 
     // Método para agregar un nuevo producto
-    public static function post() {
+    public static function post()
+    {
         $request = Flight::request();
-        $codigo = $request->data->codigo; 
+        $codigo = $request->data->codigo;
         $descripcion = $request->data->descripcion;
-        $precio_compra= $request->data->precio_compra;
+        $precio_compra = $request->data->precio_compra;
         $precio_venta = $request->data->precio_venta;
-        $peso = $request->data->peso;
+        $tipo = $request->data->tipo;
 
 
         $sqlString = "INSERT INTO catalogo_producto VALUES(?,?,?,?,'pruebas',?)";
@@ -46,13 +51,15 @@ class CatalogoProductoController {
         $query->bindParam(2, $descripcion);
         $query->bindParam(3, $precio_compra);
         $query->bindParam(4, $precio_venta);
-        $query->bindParam(5, $peso);
+        $query->bindParam(5, $tipo);
         $query->execute();
         Flight::json("Producto agregado correctamente");
+
     }
 
     // Método para eliminar un producto por su código
-    public static function deleteByCode($codigo) {
+    public static function deleteByCode($codigo)
+    {
         $sqlString = "DELETE FROM catalogo_producto WHERE codigo = :codigo";
         $query = flight::db()->prepare($sqlString);
         $query->bindParam(":codigo", $codigo);
