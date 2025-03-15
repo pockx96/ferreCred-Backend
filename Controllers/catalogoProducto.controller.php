@@ -45,7 +45,7 @@ class CatalogoProductoController
         $tipo = $request->data->tipo;
 
 
-        $sqlString = "INSERT INTO catalogo_producto VALUES(?,?,?,?,'pruebas',?)";
+        $sqlString = "INSERT INTO catalogo_producto VALUES(?,?,?,?,?)";
         $query = flight::db()->prepare($sqlString);
         $query->bindParam(1, $codigo);
         $query->bindParam(2, $descripcion);
