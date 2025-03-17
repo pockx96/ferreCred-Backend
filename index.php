@@ -179,10 +179,7 @@ Flight::route('GET /inventario', function () {
     inventarioController::getAll();
 });
 Flight::route('PUT /inventario', function () {
-    inventarioController::restarCantidad();
-});
-Flight::route('POST /inventario', function () {
-    inventarioController::sumarCantidad();
+    inventarioController::editarCantidad();
 });
 Flight::route('GET /inventario/@codigo', function ($codigo) {
     InventarioController::getByCode($codigo);
