@@ -43,6 +43,7 @@ class CatalogoProductoController
         $precio_compra = $request->data->precio_compra;
         $precio_venta = $request->data->precio_venta;
         $tipo = $request->data->tipo;
+        $cantidad = $request->data->cantidad;
 
 
         $sqlString = "INSERT INTO catalogo_producto VALUES(?,?,?,?,?)";
@@ -52,6 +53,7 @@ class CatalogoProductoController
         $query->bindParam(3, $precio_compra);
         $query->bindParam(4, $precio_venta);
         $query->bindParam(5, $tipo);
+        $query->bindParam(6, $cantidad);
         $query->execute();
         Flight::json("Producto agregado correctamente");
 
