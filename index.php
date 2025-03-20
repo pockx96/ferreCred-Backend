@@ -92,7 +92,7 @@ Flight::route('PUT /catalogo/@codigo', function ($codigo) {
     CatalogoProductoController::putUpdateProducto($codigo);
 });
 Flight::route('PUT /catalogo/cantidad/@codigo', function ($codigo) {
-    CatalogoProductoController::putUpdateProducto($codigo);
+    CatalogoProductoController::putUpdateCantidad($codigo);
 });
 
 
