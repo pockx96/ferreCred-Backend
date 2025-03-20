@@ -88,7 +88,12 @@ Flight::route('POST /catalogo', function () {
 Flight::route('DELETE /catalogo/@codigo', function ($codigo) {
     CatalogoProductoController::deleteByCode($codigo);
 });
-
+Flight::route('PUT /catalogo/@codigo', function ($codigo) {
+    CatalogoProductoController::putUpdateProducto($codigo);
+});
+Flight::route('PUT /catalogo/cantidad/@codigo', function ($codigo) {
+    CatalogoProductoController::putUpdateProducto($codigo);
+});
 
 
 // Controlador de Compras

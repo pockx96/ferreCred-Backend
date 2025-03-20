@@ -59,6 +59,41 @@ class CatalogoProductoController
 
     }
 
+
+    public static function putUpdateProducto($codigo)
+    {
+        $request = Flight::request();
+        $descripcion = $request->data->descripcion;
+        $precio_compra = $request->data->precio_compra;
+        $precio_venta = $request->data->precio_venta;
+        $tipo = $request->data->tipo;
+
+        $sqlString = "UPDATE catalogo_producto SET descripcion = ?, precio_compra = ?, precio_venta = ?, tipo = ? WHERE codigo = ?";
+        $query = Flight::db()->prepare($sqlString);
+        $query->bindParam(1, $descripcion);
+        $query->bindParam(2, $precio_compra);
+        $query->bindParam(3, $precio_venta);
+        $query->bindParam(4, $tipo);
+        $query->bindParam(5, $codigo);
+        $query->execute();
+
+        Flight::json("Producto actualizado correctamente");
+    }
+
+    public static function putUpdateCantidad($codigo)
+    {
+        $request = Flight::request();
+        $cantidad = $request->data->cantidad;
+
+        $sqlString = "UPDATE catalogo_producto SET cantidad = ? WHERE codigo = ?";
+        $query = Flight::db()->prepare($sqlString);
+        $query->bindParam(1, $cantidad);
+        $query->bindParam(2, $codigo);
+        $query->execute();
+
+        Flight::json("Cantidad actualizada correctamente");
+    }
+
     // Método para eliminar un producto por su código
     public static function deleteByCode($codigo)
     {
