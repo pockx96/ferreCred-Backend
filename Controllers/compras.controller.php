@@ -53,8 +53,8 @@ class ComprasController
         $deuda = $request->data->deuda;
 
         $sql = "INSERT INTO compras (folio, fecha, cliente, tipo_nota, total, deuda) 
-                SELECT CONCAT('Fol.', LPAD(COALESCE(MAX(SUBSTR(folio, 5)), 0) + 1, 3, '0')), NOW(), ?, ?, ?, ?
-                FROM compras";
+        SELECT CONCAT('Fol.', LPAD(COALESCE(MAX(SUBSTR(folio, 5)), 0) + 1, 3, '0')), CURDATE(), ?, ?, ?, ?
+        FROM compras";
         $query = Flight::db()->prepare($sql);
 
         $query->bindValue(1, $cliente);
